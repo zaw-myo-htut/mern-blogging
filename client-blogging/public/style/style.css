@@ -1,0 +1,17 @@
+body {
+  background: #050b13 !important;
+  font-family: "Poppins", sans-serif;
+  font-size: 15px !important;
+}
+html {
+}
+.rounded {
+  border-radius: 20px !important;
+}
+.bg-card {
+  background-color: #14171f;
+}
+
+.bx {
+  font-size: 20px;
+}

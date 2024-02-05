@@ -1,21 +1,24 @@
-import React, { Component } from 'react';
-import {BrowserRouter, Link, Route, Routes} from 'react-router-dom';
-
-const Home = () => <h1>Home</h1>;
-const About = () => <h1>About</h1>;
+import React from 'react';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import HomePage from './Page/HomePage.jsx';
+import LoginPage from './Page/Auth/LoginPage.jsx';
+import RegisterPage from './Page/Auth/RegisterPage.jsx';
+import { ToastContainer, toast } from 'react-toastify';
 
 
 function App() {
   return ( 
     <BrowserRouter>
-      <div>        
-        <Link to={"/"}>Home</Link>
-        <Link to={"/about"}>about</Link>
-      </div>
+      
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
       </Routes>
+
+      {/* alert notification for error and success message */}
+      <ToastContainer />
+      
     </BrowserRouter>
    );
 }
