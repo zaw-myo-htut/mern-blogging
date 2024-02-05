@@ -1,0 +1,2 @@
+PORT=3000
+MONGO=mongodb+srv://username:<password>@cluster0.ncgnz6m.mongodb.net/mern-blogging
