@@ -3,6 +3,8 @@ import dotenv from "dotenv";
 import AuthRouter from "./Routes/AuthRoute.js";
 import mongoose from "mongoose";
 import UserModel from "./Models/UserModel.js";
+import { alertStatusJson } from "./Controllers/Utils/JsonResponse.js";
+import cookieParser from "cookie-parser";
 
 const app = express();
 
@@ -21,6 +23,14 @@ app.listen(port, () => {
     console.log(`Server run in ${port}`);
 });
 
+// Middleware
+app.use(express.urlencoded( {extended: false} ));
+app.use(cookieParser()); //set cookie (our can use cookie)
+
+// Router Middleware
+app.use("/api", AuthRouter);
+
+
 app.get('/test', async (req, res) => {
     // await UserModel.create({
     //     name: 'Zaw Myo Htut',
@@ -31,9 +41,9 @@ app.get('/test', async (req, res) => {
     // res.json('created');
     // return;
 
-    const data = await UserModel.find({});
-    res.json(data);
+    // const data = await UserModel.find({});
+    // res.json(data);
+
+    res.json(alertStatusJson(false, "Validate Error", [{name: "required"}]))
 })
 
-// Router Middleware
-app.use(AuthRouter);
